@@ -1,0 +1,10 @@
+# Node.js
+/node_modules/
+
+# Dependencies
+/package-lock.json
+
+# Log folder
+/log/
+
+.env
