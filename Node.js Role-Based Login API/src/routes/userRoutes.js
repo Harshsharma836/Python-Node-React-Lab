@@ -1,15 +1,16 @@
 import express from "express";
 import userController from "../controllers/userController.js";
-import { authenticateJWT, authorizeRole } from "../middleware/jwt.middleware.js";
-import userService from "../services/userService.js";
+import { authenticateJWT } from "../middleware/jwt.middleware.js";
+import {
+  validateRegistration,
+  validateLogin,
+} from "../middleware/validationMiddleware.js";
 
 const router = express.Router();
 
-router.post("/register", userController.registerUser);
-router.post("/login", userController.loginUser);
+router.post("/register", validateRegistration, userController.registerUser);
+router.post("/login", validateLogin, userController.loginUser);
 
-router.get("/profile", authenticateJWT ,(req, res) => {
-    res.json({ message: "This is a user profile route" });
-});
+router.get("/profile", authenticateJWT, userController.getUserProfile);
 
 export default router;
