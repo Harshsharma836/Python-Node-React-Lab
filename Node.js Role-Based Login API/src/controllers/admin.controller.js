@@ -1,7 +1,7 @@
 import User from "../models/userModel.js";
 
 const adminController = {
-  // Get all users
+  // Get all userss
   getAllUsers: async (req, res) => {
     try {
       const users = await User.find({ role: "user" });
