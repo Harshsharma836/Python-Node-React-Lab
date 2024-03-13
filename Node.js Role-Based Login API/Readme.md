@@ -1,53 +1,67 @@
-# Project README
+# Node.js Role-Based Login API
 
-Welcome to our awesome project! Below are some handy commands to help you get started and maintain a clean and organized codebase.
+## Overview
 
-## Getting Started
+This document outlines the setup and usage of the Node.js Role-Based Login API project. The API allows users to register, log in, and access specific routes based on their assigned roles. Key technologies used include JWT authentication, the Zod library for validation, MongoDB as the database, and Mongoose as the ODM.
 
-To start the server, run the following command:
+## Setup Instructions
 
-```bash
-npm start
-```
+1. Clone the Repository:
+   ```sh
+   git clone https://github.com/Harshsharma836/ReactNode-Sandbox.git
+   ```
 
-This will kick off the server and get your project up and running.
+2. **Change directory to the Node.js Role-Based Login API folder:**
+   ```sh
+   cd Node.js Role-Based Login API
+   ```
 
-## Code Formatting
+3. **Install Dependencies:** 
+   ```sh
+   npm install
+   ```
 
-We care about consistent and beautiful code. Use the following command to run Prettier:
+4. **Environment Setup:** 
+   Create an `.env` file in the root directory with the following variables:
+   ```sh
+   PORT=3001
+   SECRET=YOUR_SECRET_KEY
+   MONGODB_URI=YOUR_MONGODB_URI
+   ```
+   Replace `YOUR_SECRET_KEY` with your JWT secret key and `YOUR_MONGODB_URI` with your MongoDB connection string.
 
-```bash
-npm run format
-```
+5. **Start the Server:** 
+   ```sh
+   npm start
+   ```
 
-This will ensure your code follows our style guidelines.
+## API Endpoints
 
-## Linting
+- `POST /api/auth/register`: Register a new user. Payload should include `username`, `password`, and `roles`.
+- `POST /api/auth/login`: Log in an existing user. Payload should include `username` and `password`.
+- `GET /api/auth/profile`: Get user profile information. Requires a valid JWT in the `Authorization` header.
+- `GET /api/admin/dashboard`: Get admin dashboard information. Requires a valid JWT with an `admin` role in the `Authorization` header.
 
-To check for linting errors and maintain code quality, use:
+## JWT Authentication
 
-```bash
-npm run lint
-```
+- JWT is used for authentication. Upon successful login, a JWT is generated and returned in the response.
+- JWT is required for accessing protected routes. Include it in the `Authorization` header as `Bearer YOUR_JWT_TOKEN`.
 
-If you want to automatically fix fixable issues, use:
+## Role-Based Access Control (RBAC)
 
-```bash
-npm run lint:fix
-```
+- Two roles are defined: `user` and `admin`.
+- Middleware is implemented to check user roles before allowing access to specific routes.
+- Certain routes are restricted to only `admin` role.
 
-This command will attempt to automatically fix any issues that can be resolved programmatically.
+## Testing
 
-## Environment Variables
+- Unit tests are written using the Mocha testing framework.
+- Run tests using `npm run test`.
 
-Don't forget to set up your environment variables! Create a `.env` file in the root of your project and add your configuration details there.
+## Contributing
 
-Example `.env` file:
+Contributions are welcome! Please fork the repository and create a pull request with your changes. For major changes, please open an issue first to discuss what you would like to change.
 
-```
-PORT=3000
-DATABASE_URL=mongodb://localhost:27017/mydatabase
-API_KEY=yourapikey
-```
+[GitHub Repo](https://github.com/Harshsharma836/ReactNode-Sandbox/tree/main/Node.js%20Role-Based%20Login%20API)
 
-Feel free to reach out if you have any questions or need further assistance. Happy coding!
+[Postman Collection](https://www.postman.com/planetary-firefly-68128/workspace/reactnode-sandbox/collection/30161518-c1082ba8-1815-4c2a-880e-e6f14c4770bc?action=share&creator=30161518)
