@@ -13,7 +13,7 @@ const adminController = {
       }));
       res.json(userProfiles);
     } catch (error) {
-      console.log(error);
+      logger.error(`Error on Admin Controller : Get All User ${error}`)
       res.status(500).json({ message: "Failed to fetch users" });
     }
   },
