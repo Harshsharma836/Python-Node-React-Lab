@@ -1,5 +1,3 @@
-# Node.js Role-Based Login API
-
 ## Overview
 
 This document outlines the setup and usage of the Node.js Role-Based Login API project. The API allows users to register, log in, and access specific routes based on their assigned roles. Key technologies used include JWT authentication, the Zod library for validation, MongoDB as the database, and Mongoose as the ODM.
@@ -60,8 +58,15 @@ This document outlines the setup and usage of the Node.js Role-Based Login API p
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and create a pull request with your changes. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
 [GitHub Repo](https://github.com/Harshsharma836/ReactNode-Sandbox/tree/main/Node.js%20Role-Based%20Login%20API)
 
 [Postman Collection](https://www.postman.com/planetary-firefly-68128/workspace/reactnode-sandbox/collection/30161518-c1082ba8-1815-4c2a-880e-e6f14c4770bc?action=share&creator=30161518)
+
+## Documentation
+
+The detailed documentation for this project can be found in [this PDF file].
+[Node.pdf](https://github.com/Harshsharma836/ReactNode-Sandbox/files/14589893/Node.pdf)
+
+
