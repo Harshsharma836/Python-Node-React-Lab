@@ -19,7 +19,8 @@ export const validateRegistration = (req, res, next) => {
     registerSchema.parse(req.body);
     next();
   } catch (error) {
-    res.status(400).json({ error: error.errors });
+    const errorMessage = error.errors.map((err) => err.message);
+    res.status(400).json({ error: errorMessage });
   }
 };
 
@@ -28,6 +29,7 @@ export const validateLogin = (req, res, next) => {
     loginSchema.parse(req.body);
     next();
   } catch (error) {
-    res.status(400).json({ error: error.errors });
+    const errorMessage = error.errors.map((err) => err.message);
+    res.status(400).json({ error: errorMessage });
   }
 };
