@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -7,10 +8,12 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(role)
       const response = await axios.post('http://localhost:3001/user/register', {
         username,
         email,
@@ -19,6 +22,7 @@ const Register = () => {
       });
       setResponseMessage(JSON.stringify(response.data));
       alert('User registered successfully');
+      navigate('/');
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         const errorMessages = error.response.data.error.join('\n');

@@ -45,6 +45,7 @@ const AdminDashboard = ({ token }) => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-1/3">
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+        <h3> Fetching All Users</h3>
         <ul>
           {users.map((user) => (
             <li key={user.email}>

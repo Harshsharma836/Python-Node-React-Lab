@@ -5,7 +5,6 @@ import Register from './components/Register';
 import Login from './components/Login';
 import UserProfile from './components/UserProfile';
 import AdminDashboard from './components/AdminDashboard';
-import Home from './components/Homes';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
@@ -14,10 +13,9 @@ function App() {
     <Router>
       <Routes> {/* Wrap your Routes in a Routes component */}
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/" element={<Login setToken={setToken} />} />
         <Route path="/user/profile" element={<UserProfile token={token} />} />
         <Route path="/admin/dashboard" element={<AdminDashboard token={token} />} />
-        <Route path="/" element={<Home token={token} />} />
       </Routes>
     </Router>
   );
