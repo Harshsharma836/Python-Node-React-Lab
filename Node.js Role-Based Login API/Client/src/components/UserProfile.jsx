@@ -7,7 +7,7 @@ const UserProfile = ({ token }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/user/profile', {
+        const response = await axios.get('https://node-role-based-server.onrender.com/user/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

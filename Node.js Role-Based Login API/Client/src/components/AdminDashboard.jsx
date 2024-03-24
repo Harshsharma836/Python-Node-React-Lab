@@ -9,7 +9,7 @@ const AdminDashboard = ({ token }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/admin/dashboard', {
+        const response = await axios.get('https://node-role-based-server.onrender.com/admin/dashboard', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

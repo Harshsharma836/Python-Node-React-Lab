@@ -14,7 +14,7 @@ const Register = () => {
     e.preventDefault();
     try {
       console.log(role)
-      const response = await axios.post('http://localhost:3001/user/register', {
+      const response = await axios.post('https://node-role-based-server.onrender.com/user/register', {
         username,
         email,
         password,

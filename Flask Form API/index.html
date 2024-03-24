@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Execution of Project</title>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Test Execution of Project</h2>
+        <form style="position:relative;left:40vh;top:2vh" name="stressform" id="stressform" onsubmit="return validate_input()">
+            <ul class="wrapper">
+                <li class="form-row">
+                    <label for="email">Mail ID :</label>
+                    <input type="text" name="mails">
+                </li>
+                <li class="form-row">
+                    <label for="env">Env :</label>
+                    <select name="env" id="env">
+                        <option value="staging">Staging</option>
+                        <option value="prodfix">ProdFix</option>
+                    </select>
+                </li>
+                <li class="form-row">
+                    <label for="numDays">Number of Days :</label>
+                    <input type="text" name="numDays" id="numDays">
+                </li>
+                <li class="form-row">
+                    <label for="tenantID">Tenant Id :</label>
+                    <input type="text" name="tenantID" id="tenantID">
+                </li>
+                <li class="form-row">
+                    <label for="systemUUID">System Id :</label>
+                    <input type="text" name="systemUUID" id="systemUUID">
+                </li>
+                <li class="form-row">
+                    <label for="query">Pattern:</label>
+                    <select name="query" id="query" multiple>
+                        <option value="dc">data_Reciver</option>
+                    </select>
+                </li>
+                <li class="form-row">
+                    <button type="submit" id="start">START</button>
+                </li>
+            </ul>
+        </form>
+        <img src="./IMAGES/s1.gif" height="25" width="25" alt="xyz" align="center" style="position:relative;left:20vh;top:2vh;display:none" id="wi"/>
+        <p style="left:40vh;" id="wait"> Please wait !! Performing Advanced Checks</p>
+    </div>
+
+    <script>
+        function validate_input() {
+            document.getElementById('start').disabled = true;
+
+            var formData = {
+                env: document.forms["stressform"]["env"].value,
+                numDays: document.forms["stressform"]["numDays"].value,
+                tenantID: document.forms["stressform"]["tenantID"].value,
+                systemUUID: document.forms["stressform"]["systemUUID"].value,
+                query: document.forms["stressform"]["query"].value,
+                mails: document.forms["stressform"]["mails"].value
+            };
+
+            fetch('http://127.0.0.1:5000/form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+
+            return false;
+        }
+    </script>
+</body>
+</html>
